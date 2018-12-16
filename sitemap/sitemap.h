@@ -44,18 +44,21 @@ namespace sitemap {
                 // Create a string representation of the XML Element
                 std::stringstream temp;
                 std::string indent(indent_level, '\t');
-                temp << "<" << this->tag << ">";
+                std::string tag_end = "</" + this->tag + ">";
+                temp << indent << "<" << this->tag << ">";
 
                 if (!child_value.empty()) {
                     temp << child_value;
+                    temp << tag_end;
                 }
                 else {
                     for (auto child : children) {
                         temp << std::endl << indent << (std::string)child.str(indent_level + 1) << std::endl;
                     }
-                }
 
-                temp << "</" << this->tag << ">";
+                    temp << indent << tag_end;
+                }
+                
                 return temp.str();
             }
         };
