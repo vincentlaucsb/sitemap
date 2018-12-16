@@ -34,11 +34,12 @@ int main(int argc, char** argv)
     for (auto& p : fs::recursive_directory_iterator(folder)) {
         // Get path and strip name of current folder
         std::string path = fs::path(p).relative_path().string();
-        path = path.substr(folder.length() + 1); // +1 is to handle trailing slash
 
 #ifdef _MSC_VER
         std::replace(path.begin(), path.end(), '\\', '/');
 #endif
+
+        path = path.substr(folder.length() + 1); // +1 is to handle trailing slash
 
         if (is_html_file(path)) {
             UrlInfo url(path);

@@ -53,7 +53,7 @@ namespace sitemap {
                 }
                 else {
                     for (auto child : children) {
-                        temp << std::endl << indent << (std::string)child.str(indent_level + 1) << std::endl;
+                        temp << std::endl << (std::string)child.str(indent_level + 1) << std::endl;
                     }
 
                     temp << indent << tag_end;
